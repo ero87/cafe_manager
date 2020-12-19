@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Form</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/manager.css}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form th:action="@{/}" method="get">
+    <button class="btn btn-md btn-warning btn-block" th:type="Submit">Go To Home Page</button>
+</form>
+<div class="container">
+    <div class="row">
+        <form autocomplete="off" action="#" th:action="@{/user/add}"
+              th:object="${userEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="text" id="name" name="name" required="required" th:placeholder="Name"
+                   class="form-control"/>
+            <input type="radio" id="manager" name="roleName" value="manager" required>
+            <label for="manager">Manager</label><br>
+            <input type="radio" id="waiter" name="roleName" value="waiter">
+            <label for="waiter">Waiter</label><br>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add user</button>
+                </div>
+            </div>
+        </form>
+        <form autocomplete="off" action="#" th:action="@{/table/add}"
+              th:object="${tableEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="radio" id="open" name="status" value="open" required>
+            <label for="open">Open</label><br>
+            <input type="radio" id="active" name="status" value="active">
+            <label for="active">Active</label><br>
+            <input type="radio" id="closed" name="status" value="closed">
+            <label for="closed">Closed</label><br>
+            <input type="radio" id="cancelled" name="status" value="cancelled">
+            <label for="cancelled">Cancelled</label><br>
+            <input type="number" id="waiter_id" required="required" name="waiter_id" th:placeholder="Waiter_number"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add table</button>
+                </div>
+            </div>
+        </form>
+        <form autocomplete="off" action="#" th:action="@{/product/add}"
+              th:object="${productEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="text" id="product" required="required" name="product" th:placeholder="Product"
+                   class="form-control"/>
+            <input type="number" id="price" required="required" name="price" th:placeholder="Price"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add product</button>
+                </div>
+            </div>
+        </form>
+        <form autocomplete="off" action="#" th:action="@{/table/update}"
+              th:object="${tableEntity}" method="post" class="form-horizontal"
+              role="form">
+            <span th:utext="${incorrectData}"></span>
+            <span th:utext="${incorrectUser}"></span>
+            <input type="number" id="tableID" required="required" name="tableID" th:placeholder="tableID"
+                   class="form-control"/>
+            <input type="number" id="waiterId" required="required" name="waiterId" th:placeholder="waiterId"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add table to waiter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

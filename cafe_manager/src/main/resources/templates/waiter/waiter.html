@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Waiters</title>
+</head>
+<body>
+<form th:action="@{/}" method="get">
+    <button class="btn btn-md btn-warning btn-block" th:type="Submit">Go To Home Page</button>
+</form>
+<div class="container">
+    <div class="row">
+        <form th:action="@{/getTables}" method="get">
+            <span th:utext="${emptyList}"></span>
+            <span th:utext="${NOTE}"></span>
+            <span th:utext="${NOTE1}"></span>
+
+            <input type="number" id="waiterId" required="required" pattern="[A-Za-z0-9]{1,20}" name="waiterId" th:placeholder="Waiter_number"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">See tables</button>
+                </div>
+            </div>
+        </form>
+
+        <form autocomplete="off" action="#" th:action="@{/order/add}"
+              th:object="${tableOrderEntity}" method="post" class="form-horizontal"
+              role="form">
+            <span th:utext="${tableError}"></span>
+            <input type="number" id="tableId" required="required" name="tableId" th:placeholder="tableId"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add table order</button>
+                </div>
+            </div>
+        </form>
+
+        <form autocomplete="off" action="#" th:action="@{/productInOrder/add}"
+              th:object="${productInOrderEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="radio" id="open" name="status" value="open" required>
+            <label for="open">Open</label><br>
+            <input type="radio" id="active" name="status" value="active">
+            <label for="active">Active</label><br>
+            <input type="radio" id="closed" name="status" value="closed">
+            <label for="closed">Closed</label><br>
+            <input type="radio" id="cancelled" name="status" value="cancelled">
+            <label for="cancelled">Cancelled</label><br>
+            <input type="number" id="productInOrderCount" required="required" pattern="[A-Za-z0-9]{1,20}" name="productInOrderCount" th:placeholder="productInOrderCount"
+                   class="form-control"/>
+            <input type="text" id="productName" required="required" pattern="[A-Za-z0-9]{1,20}" name="productName" th:placeholder="productName"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Add product in order</button>
+                </div>
+            </div>
+        </form>
+
+        <form autocomplete="off" action="#" th:action="@{/productInOrder/update}"
+              th:object="${productInOrderEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="radio" id="open1" name="status" value="open" required>
+            <label for="open">Open</label><br>
+            <input type="radio" id="active1" name="status" value="active">
+            <label for="active">Active</label><br>
+            <input type="radio" id="closed1" name="status" value="closed">
+            <label for="closed">Closed</label><br>
+            <input type="radio" id="cancelled1" name="status" value="cancelled">
+            <label for="cancelled">Cancelled</label><br>
+            <input type="number" id="productInOrderCount1" required="required" name="productInOrderCount" th:placeholder="productInOrderCount"
+                   class="form-control"/>
+            <input type="text" id="productName1" required="required" name="productName" th:placeholder="productName"
+                   class="form-control"/>
+            <input type="number" id="productInOrderId" required="required" name="productInOrderId" th:placeholder="productInOrderId"
+                   class="form-control"/>
+            <span th:utext="${productOrderError}"></span>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Update order product</button>
+                </div>
+            </div>
+        </form>
+        <form autocomplete="off" action="#" th:action="@{/order/update}"
+              th:object="${tableOrderEntity}" method="post" class="form-horizontal"
+              role="form">
+            <input type="radio" id="open2" name="status" value="open" required>
+            <label for="open">Open</label><br>
+            <input type="radio" id="active2" name="status" value="active">
+            <label for="active">Active</label><br>
+            <input type="radio" id="closed2" name="status" value="closed">
+            <label for="closed">Closed</label><br>
+            <input type="radio" id="cancelled2" name="status" value="cancelled">
+            <label for="cancelled">Cancelled</label><br>
+            <input type="number" id="tableId2" required="required" name="tableId" th:placeholder="tableId"
+                   class="form-control"/>
+            <div class="form-group">
+                <div class="col-sm-9">
+                    <button type="submit" class="btn btn-primary btn-block">Update table order</button>
+                </div>
+            </div>
+        </form>
+        </div>
+</div>
+</body>
+</html>
